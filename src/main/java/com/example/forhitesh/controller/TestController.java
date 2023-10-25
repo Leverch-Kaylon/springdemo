@@ -23,8 +23,6 @@ public class TestController {
     @Autowired
     TestService service;
 
-
-
     @GetMapping("/helloTest")
     String helloWorldTest(){
         return "Hi There latest version of spring is SPRING 6, Spring boot is Spring boot 3 :)";
@@ -76,9 +74,16 @@ public class TestController {
     //How does update/put work? Do you need to push the whole body or just updated bits??
     //From what I understand, this if resource is found just entirely replaces it otherwise
     //just add new one if not, becomes POST if resource does not exist
-    @PutMapping(value = "/updateUser")
-    void updateSomething(){
+    @PutMapping(value = "/updateUser/{userID}")
+    TestDTO updateSomething(@PathVariable Integer userID,@RequestBody TestModel data){
+        //Push to service where to check if the user exists first then update it, note put updates the whole thing
+        return service.updateTestData(userID,TestMapping.MAPPED.mapThis(data));
     }
 
+    //Only updates what is sent???But in terms of actual mapping how will that work if you do not know what is sent??
+    @PatchMapping("/updateFewThings")
+    void updateOnlyFewThings(){
+
+    }
 
 }

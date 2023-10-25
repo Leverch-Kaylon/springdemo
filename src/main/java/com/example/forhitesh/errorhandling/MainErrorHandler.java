@@ -18,4 +18,10 @@ public class MainErrorHandler {
         ErrorModel theErr = new ErrorModel(theException.getMessage());
         return new ResponseEntity<>(theErr, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(UserNotFound.class)
+    ResponseEntity<ErrorModel> userNotFound(UserNotFound noUser){
+        ErrorModel theErr = new ErrorModel(noUser.getMessage());
+        return new ResponseEntity<>(theErr, HttpStatus.PRECONDITION_FAILED);
+    }
 }

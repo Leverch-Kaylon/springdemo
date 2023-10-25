@@ -13,7 +13,7 @@ public class TestDTO {
     String occupation;
     //String dtoTest = "This is the DTO Being returned";
 
-
+//Used LOMBOK instead of these
 //    public String getName() {
 //        return name;
 //    }

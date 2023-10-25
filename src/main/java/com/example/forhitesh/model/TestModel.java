@@ -15,8 +15,7 @@ import lombok.*;
 @Entity
 @Table(name = "testtable")
 public class TestModel {
-//Be advised that these will only work if @Valid annotation
-//is added to incoming request body
+//Be advised that validation annotations will only work if @Valid annotation is added to incoming request body
      @GeneratedValue(strategy = GenerationType.AUTO)
      @Column(name = "identity")
      @Id

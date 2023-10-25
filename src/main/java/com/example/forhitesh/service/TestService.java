@@ -16,4 +16,9 @@ public interface TestService {
     String enterDataToPostgres(TestDTO dataToEnter);
 
     TestDTO getSpecificTestData(int whichData);
+
+    TestDTO updateTestData(int dataID, TestDTO updateData);
+
+    TestDTO updateSpecificTestData(int dataID, TestDTO updateData);
+
 }
