@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -36,7 +37,7 @@ public class TestController {
         return new ResponseEntity<>(dataHere,HttpStatus.OK);
     }
 
-    //LOMBOK example
+    //LOMBOK example, returning DTO
     @GetMapping("/getDataLOMBOK")
     ResponseEntity<TestDTO> getTestDataLOMBOK(){
         //Call service here to do logic
@@ -44,7 +45,7 @@ public class TestController {
         return new ResponseEntity<>(dataHere,HttpStatus.OK);
     }
 
-    //LOMBOK example
+    //Database example
     @GetMapping("/getDataFromDB")
     ResponseEntity<List<TestModel>> getTestDataFromDB(){
         //Call service here to do logic
@@ -62,6 +63,13 @@ public class TestController {
         //return service.enterData(theInput);
         return service.enterDataToPostgres(theInput);
     }
+
+    //Use path parameter to enter value that will be used in query
+    @GetMapping("/getAgeData/{age}")
+    ResponseEntity<Optional<List<TestModel>>> getAgeRelatedData(@PathVariable int age){
+        return new ResponseEntity<>(service.getUserWithSpecificAge(age),HttpStatus.OK);
+    }
+
 
     //Path Variable example
     @GetMapping("/getThis/{parameterMe}")

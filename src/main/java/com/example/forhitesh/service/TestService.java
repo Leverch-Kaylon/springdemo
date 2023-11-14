@@ -4,6 +4,7 @@ import com.example.forhitesh.dto.TestDTO;
 import com.example.forhitesh.model.TestModel;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface TestService {
     TestDTO getDefaultDataLOMBOK();
@@ -20,5 +21,7 @@ public interface TestService {
     TestDTO updateTestData(int dataID, TestDTO updateData);
 
     TestDTO updateSpecificTestData(int dataID, TestDTO updateData);
+
+    Optional<List<TestModel>> getUserWithSpecificAge(int age);
 
 }

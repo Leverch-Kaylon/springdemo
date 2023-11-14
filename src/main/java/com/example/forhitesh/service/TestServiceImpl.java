@@ -59,8 +59,8 @@ public class TestServiceImpl implements TestService {
 
     @Override
     public String enterDataToPostgres(TestDTO dataToEnter){
-        System.out.println("ID IS "+ dataToEnter.getIdentity());
-        System.out.println("Name is " + dataToEnter.getName());
+       // System.out.println("ID IS "+ dataToEnter.getIdentity());
+       // System.out.println("Name is " + dataToEnter.getName());
         actualDBInsert.save(TestMapping.MAPPED.unmapThis(dataToEnter));
        return "Successful";
     }
@@ -102,6 +102,11 @@ public class TestServiceImpl implements TestService {
 
         return null;
     };
+
+    @Override
+    public Optional<List<TestModel>> getUserWithSpecificAge(int age){
+        return actualDBInsert.getUsersWithSpecificAge(age);
+    }
 
 
 }
