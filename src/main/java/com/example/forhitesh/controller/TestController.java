@@ -70,12 +70,25 @@ public class TestController {
         return new ResponseEntity<>(service.getUserWithSpecificAge(age),HttpStatus.OK);
     }
 
-
-    //Path Variable example
-    @GetMapping("/getThis/{parameterMe}")
-    ResponseEntity<TestDTO> pathVariableRequest(@PathVariable int parameterMe){
-        return new ResponseEntity<>(service.getSpecificTestData(parameterMe),HttpStatus.OK);
+    //using Query parameter to get values
+    @GetMapping("/getAgeDataViaQuery")
+    ResponseEntity<Optional<List<TestModel>>> getAgeRelatedQueryData(@RequestParam(name = "age",required = true) Integer age){
+        return new ResponseEntity<>(service.getUserWithSpecificAge(age),HttpStatus.OK);
     }
+
+    //header parameter example
+    @GetMapping("/getAgeDataViaHeader")
+    ResponseEntity<Optional<List<TestModel>>> getAgeRelatedHeaderData(@RequestHeader(name = "age",required = true) Integer age){
+        return new ResponseEntity<>(service.getUserWithSpecificAge(age),HttpStatus.OK);
+    }
+
+
+    //Path parameter example
+    @GetMapping("/getThis/{ageValue}")
+    ResponseEntity<TestDTO> pathVariableRequest(@PathVariable int ageValue){
+        return new ResponseEntity<>(service.getSpecificTestData(ageValue),HttpStatus.OK);
+    }
+
 
     //Put mapping
     //What exactly happens if put data does not match for some reason??
